@@ -14,10 +14,22 @@ convertedTime<-strptime(vectime$Time,"%Y-%m-%d %H:%M:%S")
 mydata$Time<-convertedTime
 
 ##Open a png graphical device to make the plot
-png("Plot3.png")
+png("Plot4.png")
 
-##plot graphical elemnets one by one: a black line represent sub_metering_1, a red line represent sub_metering_2,
-##a blue line represent sub_metering_3 and a legend at last
+
+##To combine four charts, change the global parameter to be a 2 by 2 matrix of plots, then add plots one by one
+##
+
+##make a 2 by 2 matrix of plots by change the mfrow parameter of global setting
+par(mfrow=c(2,2))
+
+##first chart, demonstrate Global Active Power over time
+plot(mydata$Time,mydata$Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
+
+##second chart, demonstrate Voltage over time
+plot(mydata$Time,mydata$Voltage,type="l",xlab="datetime",ylab="Voltage")
+
+##third chart, demonstrate Energy sub metering over time
 plot(mydata$Time,mydata$Sub_metering_1,type="l",xlab="",ylab="Energy sub metering")
 
 lines(mydata$Time,mydata$Sub_metering_2,type="l",col="red")
@@ -25,6 +37,9 @@ lines(mydata$Time,mydata$Sub_metering_2,type="l",col="red")
 lines(mydata$Time,mydata$Sub_metering_3,type="l",col="blue")
 
 legend("topright",lty=1,col=c("black","red","blue"),legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"))
+
+##fourth chart, demonstrate Global reactive power over time
+plot(mydata$Time,mydata$Global_reactive_power,type="l",xlab="datetime",ylab="Global_reactive_power")
 
 ##close the png device
 dev.off()
