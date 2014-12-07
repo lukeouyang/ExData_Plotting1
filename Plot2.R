@@ -14,6 +14,6 @@ convertedTime<-strptime(vectime$Time,"%Y-%m-%d %H:%M:%S")
 mydata$Time<-convertedTime
 
 ##Open a png graphical device and make the plot
-png("Plot2.png")
+png("Plot2.png",width = 480, height = 480, units = "px")
 plot(mydata$Time,mydata$Global_active_power,type="l",xlab="",ylab="Global Active Power (kilowatts)")
 dev.off()

@@ -14,7 +14,7 @@ convertedTime<-strptime(vectime$Time,"%Y-%m-%d %H:%M:%S")
 mydata$Time<-convertedTime
 
 ##Open a png graphical device to make the plot
-png("Plot3.png")
+png("Plot3.png",width = 480, height = 480, units = "px")
 
 ##plot graphical elemnets one by one: a black line represent sub_metering_1, a red line represent sub_metering_2,
 ##a blue line represent sub_metering_3 and a legend at last
